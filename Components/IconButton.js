@@ -60,7 +60,7 @@ const TextButton = ({
                     loading?
                     <ActivityIndicator
                         animating = {true}
-                        color = {COLORS.white}
+                        color = {COLORS.primary}
                         size = "small"
                         />
                         :

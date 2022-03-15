@@ -5,15 +5,14 @@ import { COLORS,FONTS, SIZES } from '../../Theme/theme';
 import FormInput from '../../Components/InputForm';
 import TextButton from '../../Components/IconButton';
 import { IMAGE } from '../../Theme/images';
-export default class Signup extends Component {
-    constructor(props) {
-        super(props);
-        this.state=({
-            phone:"",
-            password:""
-        })
-    }
-  render() {
+export const Signup=()=>{
+  const [phone, setPhone] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [password1, setPassword1] = React.useState('');
+  const [showPass, setShowPass] = React.useState(false);
+  const [saveMe, setSaveMe] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [err, setErr] = React.useState('');
     return (
       <View style={{backgroundColor:COLORS.white,flex:1}}>
         <Header title={"Signup"}/>
@@ -32,7 +31,8 @@ export default class Signup extends Component {
         <FormInput
         label={"Mobile"}
         inputContainerStyle={{
-          borderRadius:SIZES.inputRad
+          borderRadius:SIZES.inputRad,
+          marginTop:10
         }}
         img={IMAGE.phone}
 
@@ -40,14 +40,16 @@ export default class Signup extends Component {
         <FormInput
         label={"Password"}
         inputContainerStyle={{
-          borderRadius:SIZES.inputRad
+          borderRadius:SIZES.inputRad,
+          marginTop:10
         }}
         img={IMAGE.show}
         />
         <FormInput
         label={"Re-Enter Password"}
         inputContainerStyle={{
-          borderRadius:SIZES.inputRad
+          borderRadius:SIZES.inputRad,
+          marginTop:10
         }}
         img={IMAGE.show}
         />
@@ -68,6 +70,6 @@ export default class Signup extends Component {
       </View>
     )
   }
-}
+
 
 const styles = StyleSheet.create({})

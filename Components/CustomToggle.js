@@ -21,7 +21,7 @@ const CustomSwitch = ({ label = "", onChange, value }) => {
                     <View
                         style={{
                             ...styles.dot,
-                            backgroundColor: value ? COLORS.primary : COLORS.gray,
+                            backgroundColor: value ? COLORS.gray : COLORS.gray,
                         }}
                     />
                 </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-end',
         borderRadius: 10,
-        backgroundColor: COLORS.Primary,
+        backgroundColor: COLORS.primary,
     },
     switchOffContainer: {
         width: 40,

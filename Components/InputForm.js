@@ -3,7 +3,8 @@ import {
     View,
     Text,
     TextInput,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native';
 import { IMAGE } from '../Theme/images';
 
@@ -28,7 +29,7 @@ const FormInput = ({
     keytype="",
     onPressIn,
     img,
-
+    onPress
 }) => {
     return (
         <View style={{ ...containerStyle }}>
@@ -68,20 +69,22 @@ const FormInput = ({
                     returnKeyType="default"
                     onPressIn={onPressIn}
                 />
-                <View style={{
+                <TouchableOpacity style={{
                     alignSelf:"center",
                     backgroundColor:COLORS.primary,
                     height:40,
                     width:40,
                     borderRadius:SIZES.base+5,
                     justifyContent:"center",
-                }}>
+                }}
+                onPress={onPress}
+                >
                 <Image source={img} style={{
                     width:25,
                     height:25,
                     alignSelf:"center"
                 }}/>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     )

@@ -6,16 +6,13 @@ import FormInput from '../../Components/InputForm';
 import TextButton from '../../Components/IconButton';
 import { IMAGE } from '../../Theme/images';
 import CustomSwitch from '../../Components/CustomToggle';
-import { NavigationContainer } from '@react-navigation/native';
-export default class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state=({
-            phone:"",
-            password:""
-        })
-    }
-  render() {
+export const Login=({navigation})=>{
+  const [phone, setPhone] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [showPass, setShowPass] = React.useState(false);
+  const [saveMe, setSaveMe] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [err, setErr] = React.useState('');
     return (
       <View style={{backgroundColor:COLORS.white,flex:1}}>
         <Header title={"Login"}/>
@@ -34,40 +31,66 @@ export default class Login extends Component {
         <FormInput
         label={"Mobile"}
         inputContainerStyle={{
-          borderRadius:SIZES.inputRad
+          borderRadius:SIZES.inputRad,
+          marginTop:10
         }}
+        value={phone}
         img={IMAGE.phone}
+        onChange={text => {
+          setPhone(text)
+        }}
 
         />
         <FormInput
         label={"Password"}
+        value={password}
+        secureTextEntry={!showPass}
         inputContainerStyle={{
-          borderRadius:SIZES.inputRad
+          borderRadius:SIZES.inputRad,
+          marginTop:10
         }}
-        img={IMAGE.show}
+        onChange={text => {
+          setPassword(text)
+        }}
+        onPress={()=>{
+          setShowPass(!showPass)
+        }}
+        img={showPass ? IMAGE.hide : IMAGE.show}
         />
         <View style={{
           flexDirection:"row",
           justifyContent:"space-evenly",
           marginTop:30
         }}>
-          <CustomSwitch label='Save Me?'/>
-          <TouchableOpacity>
+          <CustomSwitch label='Save Me?'
+          value={saveMe}
+          onChange={change => setSaveMe(change)}
+          />
+          <TouchableOpacity
+          onPress={()=>{
+            navigation.navigate("Forget")
+          }}
+          >
           <Text style={{
-            ...FONTS.h4
+            ...FONTS.h4,
+            color:COLORS.black
           }}>Forget Password?</Text>
           </TouchableOpacity>
         </View>
         <TextButton
+        loading={loading}
         buttonContainerStyle={{
           marginTop:30
+        }}
+        onPress={()=>{
+          alert(phone,password)
         }}
         icon={IMAGE.login}
         label={"Login"}/>
         <TouchableOpacity style={{
           margin:10
         }}
-        onPress={()=>{this.props.navigation.navigate("Signup")}}
+        onPress={()=>{navigation.navigate("Signup")}}
         >
           <Text style={{...FONTS.h4,alignSelf:"center"}}>New to App? SIGNUP</Text>
           </TouchableOpacity>        
@@ -75,6 +98,6 @@ export default class Login extends Component {
       </View>
     )
   }
-}
+
 
 const styles = StyleSheet.create({})

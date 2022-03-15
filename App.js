@@ -18,8 +18,9 @@ import {
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Login from './Screen/Auth/Login';
-import Signup from './Screen/Auth/Signup';
+import { Login } from './Screen/Auth/Login';
+import {Signup} from './Screen/Auth/Signup';
+import { Forget } from './Screen/Auth/Forget';
 import { COLORS } from './Theme/theme';
 const Stack = createStackNavigator();
 
@@ -31,6 +32,8 @@ const App=() => {
           initialRouteName={'Login'}>
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Signup" component={Signup} />
+    <Stack.Screen name="Forget" component={Forget} />
+
   </Stack.Navigator>
   </NavigationContainer>
   );
