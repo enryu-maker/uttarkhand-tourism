@@ -29,8 +29,7 @@ export const Login=({navigation})=>{
         marginTop: SIZES.normalRad,
         paddingBottom: 30,
       }}>
-        <Header title={"Login"}/>
-
+        <Header/>
         <View style={{}}>
           <Image source={IMAGE.icon} style={{
             width:120,
@@ -41,7 +40,7 @@ export const Login=({navigation})=>{
         </View>
         <View style={{
           margin:10,
-          marginTop:"10%"
+          marginTop:"5%"
         }}>
         <FormInput
         label={"Mobile"}
@@ -98,7 +97,11 @@ export const Login=({navigation})=>{
         <TextButton
         loading={loading}
         buttonContainerStyle={{
-          marginTop:30
+          marginTop:30,
+          backgroundColor:isEnableSignIn()? COLORS.primary:COLORS.lightprimary
+        }}
+        labelStyle={{
+          color:isEnableSignIn()? COLORS.white:COLORS.black
         }}
         onPress={()=>{
           alert(phone,password)

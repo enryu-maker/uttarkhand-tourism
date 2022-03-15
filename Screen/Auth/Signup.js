@@ -17,6 +17,9 @@ export const Signup=({navigation})=>{
   const [perr, setPErr] = React.useState('');
   const [Passerr, setPassErr] = React.useState('');
   const [Passerr1, setPassErr1] = React.useState('');
+  function isEnableSignIn() {
+    return phone != "" && password != "" && password1 != ""
+}
 
     return (
       
@@ -29,7 +32,27 @@ export const Signup=({navigation})=>{
         marginTop: SIZES.normalRad,
         paddingBottom: 30,
       }}>
-        <Header title={"Signup"}/>
+        <Header
+        leftComponent={
+          <TouchableOpacity style={{
+            alignSelf:"center",
+            backgroundColor:COLORS.primary,
+            height:40,
+            width:40,
+            borderRadius:SIZES.base+5,
+            justifyContent:"center",
+            marginLeft:30
+        }}
+        onPress={()=>{navigation.goBack()}}
+        >
+        <Image source={IMAGE.back} style={{
+            width:25,
+            height:25,
+            alignSelf:"center",
+            tintColor:COLORS.black
+        }}/>
+        </TouchableOpacity>
+        }/>
         <View style={{}}>
           <Image source={IMAGE.icon} style={{
             width:120,
@@ -40,7 +63,7 @@ export const Signup=({navigation})=>{
         </View>
         <View style={{
           margin:10,
-          marginTop:"10%"
+          marginTop:"5%"
         }}>
         <FormInput
         value={phone}
@@ -77,7 +100,7 @@ export const Signup=({navigation})=>{
         <FormInput
         value={password1}
         secureTextEntry={!showPass}
-        label={"Re-Enter Password"}
+        label={"Re-Enter"}
         inputContainerStyle={{
           borderRadius:SIZES.inputRad,
           marginTop:10
@@ -94,7 +117,11 @@ export const Signup=({navigation})=>{
         />
         <TextButton
         buttonContainerStyle={{
-          marginTop:30
+          marginTop:30,
+          backgroundColor:isEnableSignIn()? COLORS.primary:COLORS.lightprimary
+        }}
+        labelStyle={{
+          color:isEnableSignIn()? COLORS.white:COLORS.black
         }}
         loading={loading}
         icon={IMAGE.user}

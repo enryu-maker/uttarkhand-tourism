@@ -5,6 +5,7 @@ export const IMAGE = {
     phone:require("../Assets/Icons/phone.png"),
     user:require("../Assets/Icons/user.png"),
     icon:require("../Assets/download.png"),
+    back:require("../Assets/Icons/back.png")
 
 
 
