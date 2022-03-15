@@ -104,9 +104,10 @@ export const Login=({navigation})=>{
           color:isEnableSignIn()? COLORS.white:COLORS.black
         }}
         onPress={()=>{
-          alert(phone,password)
+          alert(password)
         }}
         icon={IMAGE.login}
+        disabled={!isEnableSignIn()}
         label={"Login"}/>
         <TouchableOpacity style={{
           margin:10

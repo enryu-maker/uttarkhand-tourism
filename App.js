@@ -16,26 +16,18 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { Login } from './Screen/Auth/Login';
-import {Signup} from './Screen/Auth/Signup';
-import { Forget } from './Screen/Auth/Forget';
-import { COLORS } from './Theme/theme';
-const Stack = createStackNavigator();
+import Routes from './Screen/Navigations/Route';
+import { Provider } from 'react-redux';
 
 
 const App=() => {
   return (
-    <NavigationContainer>
-    <Stack.Navigator  screenOptions={{ headerShown: false}}
-          initialRouteName={'Login'}>
-    <Stack.Screen name="Login" component={Login} />
-    <Stack.Screen name="Signup" component={Signup} />
-    <Stack.Screen name="Forget" component={Forget} />
+<View style={{flex:1}}>
+<Routes/>
 
-  </Stack.Navigator>
-  </NavigationContainer>
+</View>
+    
+    
   );
 };
 

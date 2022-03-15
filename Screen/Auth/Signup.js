@@ -123,6 +123,7 @@ export const Signup=({navigation})=>{
         labelStyle={{
           color:isEnableSignIn()? COLORS.white:COLORS.black
         }}
+        disabled={!isEnableSignIn()}
         loading={loading}
         icon={IMAGE.user}
         label={"Signup"}/>
