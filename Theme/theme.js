@@ -2,7 +2,15 @@ export const COLORS = {
     primary:"#FFBD44",
     lightprimary:"#FFEDCC",
     white:"#ffffff",
-    black:"#000000"
+    black:"#000000",
+    lightGray1: "#DDDDDD",
+    lightGray2: "#e6e6e6",
+    black:"black",
+    gray: "#898B9A",
+    gray2: "#BBBDC1",
+    gray3: "#CFD0D7",
+    darkGray: "#525C67",
+    darkGray2: "#757D85",
 }
 export const SIZES = {
     base: 8,
