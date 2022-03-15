@@ -12,7 +12,7 @@ export const Signup=({navigation})=>{
   const [password, setPassword] = React.useState('');
   const [password1, setPassword1] = React.useState('');
   const [showPass, setShowPass] = React.useState(false);
-  const [saveMe, setSaveMe] = React.useState(false);
+  const [showPass1, setShowPass1] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [perr, setPErr] = React.useState('');
   const [Passerr, setPassErr] = React.useState('');
@@ -84,18 +84,19 @@ export const Signup=({navigation})=>{
         }}
         errorMsg={Passerr1}
         onPress={()=>{
-          setShowPass(!showPass)
+          setShowPass(!showPass1)
         }}
         onChange={text => {
           utils.validateBoth(password,text,setPassErr1)
           setPassword1(text)
         }}
-        img={showPass ? IMAGE.hide : IMAGE.show}
+        img={showPass1 ? IMAGE.hide : IMAGE.show}
         />
         <TextButton
         buttonContainerStyle={{
           marginTop:30
         }}
+        loading={loading}
         icon={IMAGE.user}
         label={"Signup"}/>
         <TouchableOpacity style={{
