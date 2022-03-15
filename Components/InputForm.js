@@ -35,8 +35,11 @@ const FormInput = ({
         <View style={{ ...containerStyle }}>
             <View style={{ width:'88%',
                     alignSelf:'center',
+                    flexDirection:"row",
+                    justifyContent:"space-between"
                      }}>
                 <Text style={{ color: COLORS.gray, ...FONTS.body4 ,alignSelf:'flex-start'}}>{label}</Text>
+                <Text style={{ color: COLORS.red, ...FONTS.body4 }}>{errorMsg}</Text>
             </View>
 
             <View

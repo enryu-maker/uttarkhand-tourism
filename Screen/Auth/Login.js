@@ -6,16 +6,31 @@ import FormInput from '../../Components/InputForm';
 import TextButton from '../../Components/IconButton';
 import { IMAGE } from '../../Theme/images';
 import CustomSwitch from '../../Components/CustomToggle';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import utils from '../../utils/Utils';
 export const Login=({navigation})=>{
   const [phone, setPhone] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [showPass, setShowPass] = React.useState(false);
   const [saveMe, setSaveMe] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [err, setErr] = React.useState('');
+  const [perr, setPErr] = React.useState('');
+  const [Passerr, setPassErr] = React.useState('');
+  function isEnableSignIn() {
+    return phone != "" && password != ""
+}
     return (
       <View style={{backgroundColor:COLORS.white,flex:1}}>
+        <KeyboardAwareScrollView
+      showsVerticalScrollIndicator={false}
+      keyboardDismissMode="interactive"
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={{
+        marginTop: SIZES.normalRad,
+        paddingBottom: 30,
+      }}>
         <Header title={"Login"}/>
+
         <View style={{}}>
           <Image source={IMAGE.icon} style={{
             width:120,
@@ -37,9 +52,10 @@ export const Login=({navigation})=>{
         value={phone}
         img={IMAGE.phone}
         onChange={text => {
+          utils.validateEmail(text, setPErr)
           setPhone(text)
         }}
-
+        errorMsg={perr}
         />
         <FormInput
         label={"Password"}
@@ -50,8 +66,10 @@ export const Login=({navigation})=>{
           marginTop:10
         }}
         onChange={text => {
+          utils.validatePassword(text,setPassErr)
           setPassword(text)
         }}
+        errorMsg={Passerr}
         onPress={()=>{
           setShowPass(!showPass)
         }}
@@ -95,6 +113,7 @@ export const Login=({navigation})=>{
           <Text style={{...FONTS.h4,alignSelf:"center"}}>New to App? SIGNUP</Text>
           </TouchableOpacity>        
         </View>
+        </KeyboardAwareScrollView>
       </View>
     )
   }

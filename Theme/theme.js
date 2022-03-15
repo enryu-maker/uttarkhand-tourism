@@ -11,6 +11,7 @@ export const COLORS = {
     gray3: "#CFD0D7",
     darkGray: "#525C67",
     darkGray2: "#757D85",
+    red:"#ff0000"
 }
 export const SIZES = {
     base: 8,
