@@ -8,17 +8,17 @@ export const Header = ({ containerStyle, title, titleStyle, leftComponent, right
                 // flex:1,
                 height: 50,
                 flexDirection: 'row',
-                ...containerStyle,
                 alignSelf:'center',
                 marginTop:Platform.OS=="android" ? 0 :12,
-                justifyContent:"space-evenly"
+                justifyContent:"space-evenly",
+                ...containerStyle,
             }}
         >
             {
                 leftComponent
             }
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={{  ...FONTS.h2, ...titleStyle,color:COLORS.black}}>{title}</Text>
+            <Text style={{  ...FONTS.h2, ...titleStyle,color:COLORS.black,lineHeight:35}}>{title}</Text>
             </View>
             {
                 rightComponent

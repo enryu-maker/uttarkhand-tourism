@@ -18,7 +18,7 @@ export default function Routes() {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false}}>
-                {Authnav(Stack)}
+                {Mainnav(Stack)}
                 {/* {!!userData && userData?.access_token ? Mainnav(Stack)
                     : Authnav(Stack)
                 } */}
