@@ -27,11 +27,10 @@ export const Location=({
               flexDirection:"row",
           }}>
 <View style={{
-              backgroundColor:COLORS.primary,
-              height:100,
-              width:245,
-                borderRadius:SIZES.smallRad
-
+            backgroundColor:COLORS.primary,
+            height:100,
+            width:245,
+            borderRadius:SIZES.smallRad
           }}/>
           <View style={{
               marginLeft:2,
@@ -47,7 +46,6 @@ export const Location=({
         <Text style={{
        ...FONTS.h3,
        ...COLORS.primary,
-    //    width:"88%",
        alignSelf:"center",
        padding:10,
        letterSpacing:1.5
