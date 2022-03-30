@@ -61,7 +61,7 @@ const TabRoutes = route => {
       })}>
       <BottomTab.Screen name="home" component={Home} />
       <BottomTab.Screen name="Places" component={LoadLoc} />
-      <BottomTab.Screen name="Setting" component={LoadLoc} />
+      <BottomTab.Screen name="Setting" component={LoadLoc}  />
     </BottomTab.Navigator>
   );
 };

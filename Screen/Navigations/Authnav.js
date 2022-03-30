@@ -4,10 +4,11 @@ import React from 'react'
 import { Login } from "../Auth/Login";
 import { Signup } from "../Auth/Signup";
 import { Forget } from '../Auth/Forget';
+import Mainnav from './Mainnav';
 export default function Authnav(Stack) {
   return (
     <>
-    <Stack.Screen
+    <Stack.Screen 
         name="Login"
         component={Login}
     />
@@ -18,6 +19,10 @@ export default function Authnav(Stack) {
     <Stack.Screen
         name="ForgetPass"
         component={Forget}
+    />
+    <Stack.Screen
+        name="Mainnav"
+        component={Mainnav}
     />
 </>
   )

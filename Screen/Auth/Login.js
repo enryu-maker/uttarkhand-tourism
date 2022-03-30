@@ -9,6 +9,10 @@ import CustomSwitch from '../../Components/CustomToggle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import utils from '../../utils/Utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import { Login_url } from '../../Config/Config';
+import Mainnav from '../Navigations/Mainnav';
+// import Mainnav from '../Navigations/Mainnav';
 export const Login=({navigation})=>{
   const [phone, setPhone] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -17,20 +21,45 @@ export const Login=({navigation})=>{
   const [loading, setLoading] = React.useState(false);
   const [perr, setPErr] = React.useState('');
   const [Passerr, setPassErr] = React.useState('');
-  const storeData = async () => {
+  const storeData = async (access,refresh,id) => {
     try {
-        await AsyncStorage.setItem(
-            'token', "true"
+        await AsyncStorage.multiSet(
+          [['access', access], 
+          ['refresh', refresh],
+          ['id', id.toString()],
+          ['auth','true']
+        ]
         )
+        const ID = React.createContext()
     } catch (e) {
         console.log(e)
     }
+}
+async function login(){
+  await axios.post(Login_url,{
+    email:phone,
+    password:password
+  },
+  {
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then(Response=>{
+    if (Response.status == 200){
+      storeData(Response.data.access,Response.data.refresh,Response.data.userid).then(()=>{
+        navigation.navigate("Mainnav")
+      })
+    }
+    else{
+      console.log(Response)
+    }
+  })
 }
   function isEnableSignIn() {
     return phone != "" && password != ""
 }
     return (
       <View style={{backgroundColor:COLORS.white,flex:1}}>
+        
         <KeyboardAwareScrollView
       showsVerticalScrollIndicator={false}
       keyboardDismissMode="interactive"
@@ -61,7 +90,7 @@ export const Login=({navigation})=>{
         value={phone}
         img={IMAGE.phone}
         onChange={text => {
-          utils.validateEmail(text, setPErr)
+          // utils.validateEmail(text, setPErr)
           setPhone(text)
         }}
         errorMsg={perr}
@@ -75,7 +104,7 @@ export const Login=({navigation})=>{
           marginTop:10
         }}
         onChange={text => {
-          utils.validatePassword(text,setPassErr)
+          // utils.validatePassword(text,setPassErr)
           setPassword(text)
         }}
         errorMsg={Passerr}
@@ -114,7 +143,7 @@ export const Login=({navigation})=>{
           color:isEnableSignIn()? COLORS.white:COLORS.black
         }}
         onPress={()=>{
-          storeData()
+          login()
         }}
         icon={IMAGE.login}
         disabled={!isEnableSignIn()}
