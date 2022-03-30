@@ -17,6 +17,8 @@ export const Signup=({navigation})=>{
   const [perr, setPErr] = React.useState('');
   const [Passerr, setPassErr] = React.useState('');
   const [Passerr1, setPassErr1] = React.useState('');
+  const [user, setUser] = React.useState('');
+
   function isEnableSignIn() {
     return phone != "" && password != "" && password1 != ""
 }
@@ -24,14 +26,7 @@ export const Signup=({navigation})=>{
     return (
       
       <View style={{backgroundColor:COLORS.white,flex:1}}>
-        <KeyboardAwareScrollView
-      showsVerticalScrollIndicator={false}
-      keyboardDismissMode="interactive"
-      keyboardShouldPersistTaps="handled"
-      contentContainerStyle={{
-        marginTop: SIZES.normalRad,
-        paddingBottom: 30,
-      }}>
+        
         <Header
         leftComponent={
           <TouchableOpacity style={{
@@ -41,7 +36,9 @@ export const Signup=({navigation})=>{
             width:40,
             borderRadius:SIZES.base+5,
             justifyContent:"center",
-            marginLeft:30
+            marginLeft:30,
+        marginTop: SIZES.normalRad,
+
         }}
         onPress={()=>{navigation.goBack()}}
         >
@@ -53,6 +50,14 @@ export const Signup=({navigation})=>{
         }}/>
         </TouchableOpacity>
         }/>
+        <KeyboardAwareScrollView
+      showsVerticalScrollIndicator={false}
+      keyboardDismissMode="interactive"
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={{
+        marginTop: SIZES.normalRad,
+        paddingBottom: 30,
+      }}>
         <View style={{}}>
           <Image source={IMAGE.icon} style={{
             width:120,
@@ -63,7 +68,7 @@ export const Signup=({navigation})=>{
         </View>
         <View style={{
           margin:10,
-          marginTop:"5%"
+          marginTop:"1%"
         }}>
         <FormInput
         value={phone}
@@ -77,6 +82,19 @@ export const Signup=({navigation})=>{
         onChange={text => {
           utils.validateEmail(text, setPErr)
           setPhone(text)
+        }}
+        />
+        <FormInput
+        value={user}
+        label={"Username"}
+        inputContainerStyle={{
+          borderRadius:SIZES.inputRad,
+          marginTop:10
+        }}
+        img={IMAGE.user}
+        onChange={text => {
+          // utils.validatePassword(text,setPassErr)
+          setUser(text)
         }}
         />
         <FormInput

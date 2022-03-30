@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
- import 'react-native-gesture-handler';
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -17,17 +17,13 @@ import {
   View,
 } from 'react-native';
 import Routes from './Screen/Navigations/Route';
-import { Provider } from 'react-redux';
-
-
-const App=() => {
+// import {Provider} from 'react-redux';
+// import Store from './Redux/Store';
+const App = () => {
   return (
-<View style={{flex:1}}>
-<Routes/>
-
-</View>
-    
-    
+    // <Provider store={Store}>
+      <Routes />
+    // </Provider>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Mainnav from './Mainnav';
 import Authnav from './Authnav';
 // import { useSelector } from 'react-redux';
@@ -11,17 +11,15 @@ const Stack = createStackNavigator();
 
 
 export default function Routes() {
-// const userData = useSelector((state)=> state.auth.userData)
-
-// console.log("user data",userData)
+    // const [Route,setRoute] = React.useState(null)
+    async function retrieveData() {
+        return(console.log(JSON.parse(await AsyncStorage.getItem('token'))))
+      };
 
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false}}>
-                {Mainnav(Stack)}
-                {/* {!!userData && userData?.access_token ? Mainnav(Stack)
-                    : Authnav(Stack)
-                } */}
+                {retrieveData()?Mainnav(Stack):Authnav(Stack)}
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -18,7 +18,7 @@ const TabRoutes = route => {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
 
-          if (route.name === 'Home') {
+          if (route.name === 'home') {
             iconName = focused ? IMAGE.home : IMAGE.home;
           } else if (route.name === 'Places') {
             iconName = focused ? IMAGE.temple : IMAGE.temple;
@@ -59,7 +59,7 @@ const TabRoutes = route => {
         tabBarActiveTintColor: COLORS.lightprimary,
         tabBarInactiveTintColor: COLORS.black,
       })}>
-      <BottomTab.Screen name="Home" component={Home} />
+      <BottomTab.Screen name="home" component={Home} />
       <BottomTab.Screen name="Places" component={LoadLoc} />
       <BottomTab.Screen name="Setting" component={LoadLoc} />
     </BottomTab.Navigator>

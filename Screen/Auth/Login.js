@@ -8,6 +8,7 @@ import { IMAGE } from '../../Theme/images';
 import CustomSwitch from '../../Components/CustomToggle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import utils from '../../utils/Utils';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export const Login=({navigation})=>{
   const [phone, setPhone] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -16,6 +17,15 @@ export const Login=({navigation})=>{
   const [loading, setLoading] = React.useState(false);
   const [perr, setPErr] = React.useState('');
   const [Passerr, setPassErr] = React.useState('');
+  const storeData = async () => {
+    try {
+        await AsyncStorage.setItem(
+            'token', "true"
+        )
+    } catch (e) {
+        console.log(e)
+    }
+}
   function isEnableSignIn() {
     return phone != "" && password != ""
 }
@@ -85,7 +95,7 @@ export const Login=({navigation})=>{
           />
           <TouchableOpacity
           onPress={()=>{
-            navigation.navigate("Forget")
+            navigation.navigate("Signup")
           }}
           >
           <Text style={{
@@ -104,7 +114,7 @@ export const Login=({navigation})=>{
           color:isEnableSignIn()? COLORS.white:COLORS.black
         }}
         onPress={()=>{
-          alert(password)
+          storeData()
         }}
         icon={IMAGE.login}
         disabled={!isEnableSignIn()}
